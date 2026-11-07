@@ -23,8 +23,7 @@ js/main.js      Code used on every page (mobile menu, greeting, footer year, scr
 js/planner.js   Planner code (add / complete / delete tasks, progress bar)
 js/contact.js   Contact form validation and sending
 images/         Photo, project screenshots and the tab icon
-videos/         Intro video
-audio/          Audio message
+audio/          Audio intro (home) and audio message (about)
 ```
 
 ## Where each requirement is covered
@@ -42,7 +41,7 @@ audio/          Audio message
 | Images | `index.html`, `projects.html` |
 | Hyperlinks | Navigation menu, buttons, `contact.html` |
 | Lists | Navigation menu, `about.html` (skills + hobbies), planner task list |
-| Multimedia | `index.html` (video), `about.html` (audio) |
+| Multimedia | `index.html` (audio intro), `about.html` (audio message) |
 | External CSS | `css/style.css` |
 | Responsive / mobile-friendly | `style.css` section 13 |
 | Flexbox and Grid | `style.css` sections 3, 5, 6, 8, 9, 10 |

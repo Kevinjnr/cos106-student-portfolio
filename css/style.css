@@ -468,13 +468,36 @@ img {
   align-self: center;
 }
 
-.intro-video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+/* Home page audio intro (this replaced the old ".intro-video" style when the
+   home video was changed to audio). Dark card with an icon and the audio player. */
+.intro-audio {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 32px;
   border-radius: 24px;
   background-color: var(--ink);
   box-shadow: var(--shadow);
+}
+
+/* Green circle with a music note */
+.intro-audio-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--green);
+  color: var(--ink);
+  font-size: 1.4rem;
+}
+
+/* The audio player fills the rest of the card */
+.intro-audio audio {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
 }
 
 
@@ -1503,7 +1526,8 @@ tbody tr:hover {
   .contact-details,
   .planner-summary,
   .planner-main,
-  .audio-card {
+  .audio-card,
+  .intro-audio {
     padding: 24px;
   }
 

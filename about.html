@@ -12,15 +12,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- PDF: Responsive design + Mobile-friendly interface - this line makes the page fit phone screens -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- EDIT ME: your name -->
   <title>About Me | Victor Chukwuma</title>
   <!-- Fonts from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- PDF: External CSS stylesheet -->
+  <!-- External CSS stylesheet -->
   <!-- Tab icon (favicon) shown in the browser tab -->
   <link rel="icon" type="image/png" href="images/v.png">
   <link rel="stylesheet" href="css/style.css">
@@ -28,14 +26,13 @@
 <body>
 
   <!-- ===================== HEADER + NAVIGATION MENU ===================== -->
-  <!-- PDF: Proper semantic HTML - <header> holds the logo and the menu -->
+  <!--Proper semantic HTML - <header> holds the logo and the menu -->
   <header class="site-header">
-    <!-- EDIT ME: your initials + name -->
     <a href="index.html" class="logo"><span class="logo-mark">VC</span>Victor Chukwuma</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
     </button>
-    <!-- PDF: Navigation menu + Hyperlinks + Lists (a semantic <nav> holding a <ul> list of links) -->
+    <!-- Navigation menu + Hyperlinks + Lists (a semantic <nav> holding a <ul> list of links) -->
     <nav>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -47,10 +44,10 @@
     </nav>
   </header>
 
-  <!-- PDF: Proper semantic HTML - <main> holds the main content of the page -->
+  <!-- Proper semantic HTML - <main> holds the main content of the page -->
   <main>
 
-    <!-- Page title banner. PDF: Proper semantic HTML - each part of the page is a <section> -->
+    <!-- Page title banner.  -->
     <section class="page-banner">
       <span class="section-label">About me</span>
       <h1>Curious by <em>nature.</em></h1>
@@ -58,14 +55,13 @@
     </section>
 
     <!-- ===================== EDUCATION ===================== -->
-    <!-- PDF: Educational background  +  PDF: Tables (<table>, <thead>, <tbody>, <tr>, <th>, <td>)  +  PDF: Proper semantic HTML - <section> -->
+    <!--  Educational background  +  Tables (<table>, <thead>, <tbody>, <tr>, <th>, <td>)  +  -->
     <section class="section">
       <div class="section-head reveal">
         <span class="section-label">01 &mdash; Education</span>
         <h2>Educational <em>background</em></h2>
       </div>
 
-      <!-- EDIT ME: change the schools, years and qualifications to yours -->
       <!-- The wrapper div lets the table scroll sideways on small phones -->
       <div class="table-wrapper reveal">
         <table>
@@ -73,24 +69,20 @@
             <tr>
               <th>School</th>
               <th>Qualification</th>
-              <th>Year</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Miva Open University</td>
               <td>B.Sc. Computer Science (in progress)</td>
-              <td>2025 &ndash; Present</td>
             </tr>
             <tr>
               <td>Your Secondary School</td>
               <td>WAEC / SSCE</td>
-              <td>2019 &ndash; 2024</td>
             </tr>
             <tr>
               <td>Your Primary School</td>
               <td>First School Leaving Certificate</td>
-              <td>2013 &ndash; 2019</td>
             </tr>
           </tbody>
         </table>
@@ -98,16 +90,16 @@
     </section>
 
     <!-- ===================== CAREER ASPIRATIONS ===================== -->
-    <!-- PDF: Career aspirations -->
+    <!-- Career aspirations -->
     <section class="section split">
       <div class="section-head reveal">
         <span class="section-label">02 &mdash; Ambition</span>
         <h2>Career <em>aspirations</em></h2>
       </div>
 
-      <!-- EDIT ME: write about what you want to become -->
+      <!-- What I want to become -->
       <p class="statement reveal">
-        My goal is to become a skilled software developer &mdash; building websites and apps
+        My goal is to become a skilled software developer, building websites and apps
         that solve real problems for people in my community, first with a great tech company
         and later through a business of my own.
       </p>
@@ -117,13 +109,13 @@
     <!-- Two columns side by side (CSS Grid "split" class) -->
     <section class="section split">
 
-      <!-- TECHNICAL SKILLS  -  PDF: Technical skills + Lists (unordered list) -->
+      <!-- TECHNICAL SKILLS  -   Technical skills + Lists (unordered list) -->
       <div class="reveal">
         <div class="section-head">
           <span class="section-label">03 &mdash; Skills</span>
           <h2>Technical <em>skills</em></h2>
         </div>
-        <!-- EDIT ME: add or remove skills. Each skill is one <li> -->
+        <!--My skills <li> -->
         <ul class="skills-list">
           <li>HTML</li>
           <li>CSS</li>
@@ -134,13 +126,13 @@
         </ul>
       </div>
 
-      <!-- HOBBIES  -  PDF: Hobbies and interests + Lists (ordered list) -->
+      <!-- HOBBIES   -->
       <div class="reveal">
         <div class="section-head">
           <span class="section-label">04 &mdash; Interests</span>
           <h2>Hobbies &amp; <em>interests</em></h2>
         </div>
-        <!-- EDIT ME: change these to your own hobbies -->
+    
         <ol class="hobbies-list">
           <li>Reading tech blogs</li>
           <li>Playing football</li>
@@ -151,7 +143,7 @@
     </section>
 
     <!-- ===================== AUDIO ===================== -->
-    <!-- PDF: Multimedia (audio) - an extra example of multimedia -->
+    <!--Multimedia (audio) - an extra example of multimedia -->
     <section class="section">
       <div class="audio-card reveal">
         <div class="audio-icon" aria-hidden="true">&#9835;</div>
@@ -160,8 +152,7 @@
           <p>Press play to hear a quick voice note.</p>
         </div>
 
-        <!-- PUT YOUR AUDIO HERE: save a voice note in the "audio" folder as "message.mp3"
-             (or change the src below to your own file name) -->
+        <!-- My audio -->
         <audio controls>
           <source src="audio/message.mp3" type="audio/mpeg">
           Sorry, your browser does not support the audio tag.
@@ -171,14 +162,13 @@
 
   </main>
 
-  <!-- PDF: Proper semantic HTML - <footer> at the bottom of every page -->
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-big">Let's build <em>something good</em> together.</p>
       <a href="contact.html" class="btn btn-light">Get in touch <span class="arrow">&rarr;</span></a>
     </div>
     <div class="footer-bottom">
-      <!-- EDIT ME: your name -->
+    
       <p>&copy; <span id="year">2026</span> Victor Jnr. All rights reserved.</p>
       <p>Built with HTML, CSS &amp; JavaScript for COS 106.</p>
     </div>

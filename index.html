@@ -157,8 +157,9 @@
       </div>
     </section>
 
-    <!-- ===================== VIDEO SECTION ===================== -->
-    <!-- Multimedia (video or audio) -->
+    <!-- ===================== AUDIO SECTION ===================== -->
+    <!-- Multimedia (audio). This used to be a video; it was changed to an audio
+         intro. Styled by ".intro-audio" in css/style.css (section 5). -->
     <section class="section split">
       <div class="section-head reveal">
         <span class="section-label">02 &mdash; Introduction</span>
@@ -166,14 +167,16 @@
         <p class="muted">A short Message where I introduce myself and what I'm working towards.</p>
       </div>
 
-      <div class="reveal">
-        <!-- PUT YOUR VIDEO HERE: save a short video in the "videos" folder as "intro.mp4"
+      <div class="reveal intro-audio">
+        <!-- Music-note icon in a green circle (just decoration) -->
+        <div class="intro-audio-icon" aria-hidden="true">&#9835;</div>
+        <!-- PUT YOUR AUDIO HERE: save a short voice note in the "audio" folder as "intro.mp3"
              (or change the src below to your own file name) -->
-        <video controls class="intro-video">
-          <source src="videos/intro.mp4" type="video/mp4">
-          <!-- This text shows only if the browser can't play videos -->
-          Sorry, your browser does not support the video tag.
-        </video>
+        <audio controls>
+          <source src="audio/intro.mp3" type="audio/mpeg">
+          <!-- This text shows only if the browser can't play audio -->
+          Sorry, your browser does not support the audio tag.
+        </audio>
       </div>
     </section>
 
