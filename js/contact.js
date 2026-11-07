@@ -22,7 +22,7 @@
 
 
 // ===================== GET THE HTML ELEMENTS =====================
-// PDF: DOM manipulation - grab the form and each input box
+// DOM manipulation - grab the form and each input box
 const contactForm = document.getElementById("contactForm");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -32,7 +32,6 @@ const successMessage = document.getElementById("successMessage");
 
 
 // ===================== SHOW / CLEAR AN ERROR =====================
-// PDF: Functions + DOM manipulation
 
 // Shows an error under a field and gives the field a red border
 // input   = the input box (e.g. nameInput)
@@ -70,7 +69,7 @@ contactForm.addEventListener("submit", function (event) {
 
 
   // ---------- CHECK NAME ----------
-  // PDF: No field is empty
+  // No field is empty
   if (name === "") {
     showError(nameInput, "nameError", "Please enter your name.");
     formIsValid = false;
@@ -85,11 +84,9 @@ contactForm.addEventListener("submit", function (event) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (email === "") {
-    // PDF: No field is empty
     showError(emailInput, "emailError", "Please enter your email address.");
     formIsValid = false;
   } else if (!emailPattern.test(email)) {
-    // PDF: Email format is valid
     showError(emailInput, "emailError", "Please enter a valid email, e.g. name@example.com");
     formIsValid = false;
   } else {
@@ -102,11 +99,10 @@ contactForm.addEventListener("submit", function (event) {
   const phonePattern = /^[0-9]+$/;
 
   if (phone === "") {
-    // PDF: No field is empty
     showError(phoneInput, "phoneError", "Please enter your phone number.");
     formIsValid = false;
   } else if (!phonePattern.test(phone)) {
-    // PDF: Phone number contains only digits
+    // Phone number contains only digits
     showError(phoneInput, "phoneError", "Phone number must contain only digits (0-9).");
     formIsValid = false;
   } else {
@@ -115,7 +111,6 @@ contactForm.addEventListener("submit", function (event) {
 
 
   // ---------- CHECK MESSAGE ----------
-  // PDF: No field is empty
   if (message === "") {
     showError(messageInput, "messageError", "Please type a message.");
     formIsValid = false;
@@ -125,10 +120,37 @@ contactForm.addEventListener("submit", function (event) {
 
 
   // ---------- ALL GOOD? ----------
-  // If nothing failed, show a thank-you message and empty the form
+  // If nothing failed, send the form to Formspree, then show a thank-you message
+  //
+  // HOW THE FORMSPREE PART WORKS:
+  //   - event.preventDefault() at the top stops the browser from sending the form
+  //     on its own, so WE have to send it here with fetch(). Without this fetch,
+  //     nothing ever reaches Formspree.
+  //   - contactForm.action = the Formspree URL written in contact.html
+  //   - new FormData(contactForm) collects every input that has a "name" attribute
+  //     (name, email, phone, message). Inputs without "name" are NOT sent.
+  //   - The "Accept: application/json" header makes Formspree reply with data
+  //     instead of redirecting to its own thank-you page.
+  //   - The success message only shows if Formspree says the send worked (response.ok).
+  //   - First time only: Formspree emails you a link to confirm the form.
+  //     Messages are not delivered until you click it.
   if (formIsValid) {
-    // PDF: Dynamic content updates - show a message that uses the person's name
-    successMessage.textContent = "Thank you, " + name + "! Your message has been sent.";
-    contactForm.reset();   // clears all the boxes
+    fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: { "Accept": "application/json" }   // tells Formspree not to redirect
+    })
+      .then(function (response) {
+        if (response.ok) {
+          // Dynamic content updates - show a message that uses the person's name
+          successMessage.textContent = "Thank you, " + name + "! Your message has been sent.";
+          contactForm.reset();   // clears all the boxes
+        } else {
+          successMessage.textContent = "Sorry, something went wrong. Please try again.";
+        }
+      })
+      .catch(function () {
+        successMessage.textContent = "Network error. Please check your connection and try again.";
+      });
   }
 });

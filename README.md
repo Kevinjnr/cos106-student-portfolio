@@ -1,6 +1,14 @@
 # COS 106 – Student Portfolio and Academic Management Website
 
-Term project for COS 106 – Introduction to Web Technologies (Miva Open University).
+My term project for COS 106 – Introduction to Web Technologies at Miva Open University. It's a personal portfolio site with an academic planner for keeping track of tasks, built with plain HTML, CSS and JavaScript.
+
+## Pages
+
+- **Home** – introduction, photo and a short bio
+- **About Me** – education, career goals, skills and hobbies
+- **Projects** – three projects with descriptions, images and links
+- **Planner** – add, complete and delete academic tasks, with a progress bar
+- **Contact** – a validated contact form that sends messages through Formspree
 
 ## Files
 
@@ -13,18 +21,13 @@ contact.html    Contact page
 css/style.css   The one stylesheet for the whole site
 js/main.js      Code used on every page (mobile menu, greeting, footer year, scroll effects)
 js/planner.js   Planner code (add / complete / delete tasks, progress bar)
-js/contact.js   Contact form validation
-images/         Your photo and project screenshots go here
-videos/         Your intro video goes here
-audio/          Your audio message goes here
+js/contact.js   Contact form validation and sending
+images/         Photo, project screenshots and the tab icon
+videos/         Intro video
+audio/          Audio message
 ```
 
-## Things to edit before submitting
-
-- Search every file for **`EDIT ME`** – that's your name, bio, schools, skills, hobbies, projects and contact details.
-- Search for **`PUT YOUR IMAGE HERE`**, **`PUT YOUR VIDEO HERE`** and **`PUT YOUR AUDIO HERE`** – that's where your media files go.
-
-## Where each PDF requirement is done
+## Where each requirement is covered
 
 | Requirement | Where |
 |---|---|
@@ -52,10 +55,6 @@ audio/          Your audio message goes here
 | Arrays and functions | `js/planner.js` |
 | Task management system | `js/planner.js` |
 
-## Hosting (GitHub Pages)
+## Running it
 
-1. Push this folder to GitHub.
-2. On GitHub go to **Settings → Pages**.
-3. Under "Branch" pick **main** and **/ (root)**, then **Save**.
-4. After a minute your site will be live at `https://<your-username>.github.io/cos106-student-portfolio/`.
-5. Submit that link plus the repository link.
+No build step is needed. Open `index.html` in a browser, or view the live version on GitHub Pages. The site is hosted from the `main` branch, root folder.

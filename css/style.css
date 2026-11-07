@@ -112,8 +112,7 @@ img {
 
 
 /* ===================== 3. NAVIGATION STYLING ===================== */
-/* PDF: Navigation styling  +  PDF: Flexbox
-   The header is a floating "pill" with a frosted-glass look. */
+/* The header is a floating "pill" with a frosted-glass look. */
 .site-header {
   display: flex;                   /* PDF: Flexbox - logo on the left, menu on the right */
   justify-content: space-between;

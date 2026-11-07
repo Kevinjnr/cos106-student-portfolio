@@ -39,31 +39,7 @@ menuToggle.addEventListener("click", function () {
   menuToggle.setAttribute("aria-expanded", isOpen);
 });
 
-
-// ===================== 2. GREETING MESSAGE =====================
-// PDF: Dynamic content updates
-// Changes "Hello!" on the home page to Good morning / afternoon / evening
-
-// Find the greeting text. Only the home page has it, so on other pages this is null.
-const greeting = document.getElementById("greeting");
-
-// Only run the code if the greeting exists on this page
-if (greeting) {
-  // Get the current hour from the computer's clock (0 to 23)
-  const hour = new Date().getHours();
-
-  // Pick the right message based on the time
-  if (hour < 12) {
-    greeting.textContent = "Good morning!";      // before 12pm
-  } else if (hour < 17) {
-    greeting.textContent = "Good afternoon!";    // 12pm to 4:59pm
-  } else {
-    greeting.textContent = "Good evening!";      // 5pm and later
-  }
-}
-
-
-// ===================== 3. FOOTER YEAR =====================
+// ===================== 2. FOOTER YEAR =====================
 // PDF: DOM manipulation
 // Puts the current year in the footer so you never have to update it by hand
 
@@ -71,7 +47,7 @@ const yearSpan = document.getElementById("year");
 yearSpan.textContent = new Date().getFullYear();
 
 
-// ===================== 4. HEADER SHADOW ON SCROLL =====================
+// ===================== 3. HEADER SHADOW ON SCROLL =====================
 // PDF: Event handling
 // Adds a soft shadow under the header once you scroll down a little
 
@@ -87,7 +63,7 @@ window.addEventListener("scroll", function () {
 });
 
 
-// ===================== 5. SCROLL REVEAL =====================
+// ===================== 4. SCROLL REVEAL =====================
 // PDF: Animations + DOM manipulation
 // Every element with class="reveal" fades in when it scrolls onto the screen.
 
