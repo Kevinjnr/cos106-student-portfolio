@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--
+  =========================================================
+  PROJECTS PAGE  (projects.html)
+  PDF Requirement 3: Projects Page
+    - Three sample projects   -> see "PROJECT 1", "PROJECT 2", "PROJECT 3"
+    - Project descriptions    -> the <p> inside each project card
+    - Images/screenshots      -> the <img> inside each project card
+    - Links (real or simulated) -> the "View project" link in each card
+  =========================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- PDF: Responsive design + Mobile-friendly interface - this line makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT ME: your name -->
+  <title>Projects | Your Name</title>
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- PDF: External CSS stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER + NAVIGATION MENU ===================== -->
+  <!-- PDF: Proper semantic HTML - <header> holds the logo and the menu -->
+  <header class="site-header">
+    <!-- EDIT ME: your initials + name -->
+    <a href="index.html" class="logo"><span class="logo-mark">Y</span>Your Name</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <!-- PDF: Navigation menu + Hyperlinks + Lists (a semantic <nav> holding a <ul> list of links) -->
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PDF: Proper semantic HTML - <main> holds the main content of the page -->
+  <main>
+
+    <!-- Page title banner. PDF: Proper semantic HTML - each part of the page is a <section> -->
+    <section class="page-banner">
+      <span class="section-label">Selected work</span>
+      <h1>Things I've <em>made.</em></h1>
+      <p>A few projects I've built while learning &mdash; each one taught me something new.</p>
+    </section>
+
+    <section class="section">
+      <!-- The project cards sit in a CSS Grid (see "PROJECT CARDS" in style.css) -->
+      <div class="project-grid">
+
+        <!-- ===================== PROJECT 1 ===================== -->
+        <!-- PDF: Three sample projects (project 1 of 3) -->
+        <!-- PDF: Proper semantic HTML - each project is an <article> -->
+        <article class="project-card reveal">
+          <div class="project-media">
+            <!-- PDF: Images/screenshots. PUT YOUR IMAGE HERE: screenshot of project 1 -> images/project1.jpg -->
+            <img src="images/project1.jpg" alt="Screenshot of Project One">
+            <span class="project-number">No. 01</span>
+          </div>
+          <div class="project-info">
+            <!-- Tools used. PDF: Lists. EDIT ME -->
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+            <!-- EDIT ME: project name -->
+            <h3>Personal Portfolio Website</h3>
+            <!-- PDF: Project descriptions. EDIT ME: project description -->
+            <p>
+              This website! A multi-page student portfolio with an academic planner
+              and a contact form with validation.
+            </p>
+            <!-- PDF: Links (real or simulated) + Hyperlinks. EDIT ME: put your real link here (e.g. your GitHub repo). "#" is a simulated link -->
+            <a href="#" class="project-link" target="_blank">View project <span class="arrow">&#8599;</span></a>
+          </div>
+        </article>
+
+        <!-- ===================== PROJECT 2 ===================== -->
+        <!-- PDF: Three sample projects (project 2 of 3) -->
+        <article class="project-card reveal">
+          <div class="project-media">
+            <!-- PDF: Images/screenshots. PUT YOUR IMAGE HERE: screenshot of project 2 -> images/project2.jpg -->
+            <img src="images/project2.jpg" alt="Screenshot of Project Two">
+            <span class="project-number">No. 02</span>
+          </div>
+          <div class="project-info">
+            <!-- Tools used. PDF: Lists. EDIT ME -->
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+            <!-- Project name. EDIT ME -->
+            <h3>Simple Calculator</h3>
+            <!-- PDF: Project descriptions. EDIT ME -->
+            <p>
+              A calculator that can add, subtract, multiply and divide. I made it to
+              practise JavaScript functions and button click events.
+            </p>
+            <!-- PDF: Links (real or simulated) + Hyperlinks. EDIT ME: your link -->
+            <a href="#" class="project-link" target="_blank">View project <span class="arrow">&#8599;</span></a>
+          </div>
+        </article>
+
+        <!-- ===================== PROJECT 3 ===================== -->
+        <!-- PDF: Three sample projects (project 3 of 3) -->
+        <article class="project-card reveal">
+          <div class="project-media">
+            <!-- PDF: Images/screenshots. PUT YOUR IMAGE HERE: screenshot of project 3 -> images/project3.jpg -->
+            <img src="images/project3.jpg" alt="Screenshot of Project Three">
+            <span class="project-number">No. 03</span>
+          </div>
+          <div class="project-info">
+            <!-- Tools used. PDF: Lists. EDIT ME -->
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>Flexbox</li>
+            </ul>
+            <!-- Project name. EDIT ME -->
+            <h3>Recipe Landing Page</h3>
+            <!-- PDF: Project descriptions. EDIT ME -->
+            <p>
+              A one-page website showing my favourite Nigerian recipes. I used it to
+              practise Flexbox, images and responsive design.
+            </p>
+            <!-- PDF: Links (real or simulated) + Hyperlinks. EDIT ME: your link -->
+            <a href="#" class="project-link" target="_blank">View project <span class="arrow">&#8599;</span></a>
+          </div>
+        </article>
+
+        <!-- Want to add another project? Copy one <article> block above and paste it here -->
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PDF: Proper semantic HTML - <footer> at the bottom of every page -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-big">Let's build <em>something good</em> together.</p>
+      <a href="contact.html" class="btn btn-light">Get in touch <span class="arrow">&rarr;</span></a>
+    </div>
+    <div class="footer-bottom">
+      <!-- EDIT ME: your name -->
+      <p>&copy; <span id="year">2026</span> Your Name. All rights reserved.</p>
+      <p>Built with HTML, CSS &amp; JavaScript for COS 106.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

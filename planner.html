@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+  =========================================================
+  ACADEMIC PLANNER PAGE  (planner.html)
+  PDF Requirement 4: Academic Planner Page
+    - Add tasks               -> the form below + addTask() in js/planner.js
+    - Mark tasks as completed -> the round button + toggleTask() in js/planner.js
+    - Delete tasks            -> the "Delete" button + deleteTask() in js/planner.js
+    - JavaScript must be used -> all of it is in js/planner.js
+  =========================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- PDF: Responsive design + Mobile-friendly interface - this line makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT ME: your name -->
+  <title>Academic Planner | Your Name</title>
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- PDF: External CSS stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER + NAVIGATION MENU ===================== -->
+  <!-- PDF: Proper semantic HTML - <header> holds the logo and the menu -->
+  <header class="site-header">
+    <!-- EDIT ME: your initials + name -->
+    <a href="index.html" class="logo"><span class="logo-mark">Y</span>Your Name</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <!-- PDF: Navigation menu + Hyperlinks + Lists (a semantic <nav> holding a <ul> list of links) -->
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="planner.html" class="active">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PDF: Proper semantic HTML - <main> holds the main content of the page -->
+  <main>
+
+    <!-- Page title banner. PDF: Proper semantic HTML - each part of the page is a <section> -->
+    <section class="page-banner">
+      <span class="section-label">Academic planner</span>
+      <h1>One task <em>at a time.</em></h1>
+      <p>Keep track of assignments, tests and study goals &mdash; tick them off as you go.</p>
+    </section>
+
+    <section class="section planner-layout">
+
+      <!-- ===================== SUMMARY PANEL ===================== -->
+      <!-- PDF: Proper semantic HTML - <aside> = side content. PDF: Dynamic content updates - JS fills in the date and progress -->
+      <aside class="planner-summary">
+        <span class="section-label">Today</span>
+        <!-- JS writes today's date here (see js/planner.js) -->
+        <p class="today" id="todayDate">Today</p>
+
+        <!-- Progress bar - JS changes the width of the green bar -->
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-text">
+          <span>Progress</span>
+          <strong id="progressText">0%</strong>
+        </p>
+      </aside>
+
+      <!-- ===================== TASKS PANEL ===================== -->
+      <div class="planner-main">
+
+        <!-- ADD TASK FORM  -  PDF: Forms  +  PDF: Add tasks -->
+        <form id="taskForm" class="task-form">
+          <input type="text" id="taskInput" placeholder="e.g. Finish COS 106 assignment" aria-label="New task">
+          <button type="submit" class="btn">Add Task <span class="arrow">+</span></button>
+        </form>
+
+        <!-- Error message shows here if you try to add an empty task (filled by JS) -->
+        <p class="error" id="taskError"></p>
+
+        <!-- Task counter - JS updates this text every time the list changes -->
+        <p class="task-count" id="taskCount">You have 0 tasks.</p>
+
+        <!-- TASK LIST  -  PDF: Lists. This list starts empty. JS creates a <li> for each task.
+             PDF: Mark tasks as completed + Delete tasks - every task JS creates gets a round (tick) button
+             and a "Delete" button (see showTasks() in js/planner.js) -->
+        <ul id="taskList" class="task-list"></ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- PDF: Proper semantic HTML - <footer> at the bottom of every page -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-big">Let's build <em>something good</em> together.</p>
+      <a href="contact.html" class="btn btn-light">Get in touch <span class="arrow">&rarr;</span></a>
+    </div>
+    <div class="footer-bottom">
+      <!-- EDIT ME: your name -->
+      <p>&copy; <span id="year">2026</span> Your Name. All rights reserved.</p>
+      <p>Built with HTML, CSS &amp; JavaScript for COS 106.</p>
+    </div>
+  </footer>
+
+  <!-- main.js = menu + footer year,  planner.js = the planner code -->
+  <script src="js/main.js"></script>
+  <script src="js/planner.js"></script>
+</body>
+</html>

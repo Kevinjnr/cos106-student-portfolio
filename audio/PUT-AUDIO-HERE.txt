@@ -1,0 +1,5 @@
+PUT YOUR AUDIO IN THIS FOLDER
+
+message.mp3 -> short voice message (about page)
+
+If your file has a different name, change the src="" in about.html to match.

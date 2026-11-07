@@ -1,0 +1,1533 @@
+/*
+  =========================================================
+  style.css  -  ONE stylesheet for the whole website
+  PDF: External CSS stylesheet  (every page links to this file)
+
+  Design idea: calm and "editorial" - warm off-white paper,
+  deep green-black ink, and LIGHT GREEN as the main colour
+  (used like a highlighter pen). Big serif headings + a clean
+  sans-serif for normal text.
+
+  Quick map of this file (search for the titles in CAPS):
+    1. COLOUR SCHEME (variables)
+    2. BASIC RESET + PAGE SETUP
+    3. NAVIGATION STYLING
+    4. BUTTONS
+    5. HOME PAGE (HERO + MARQUEE)
+    6. SECTIONS + CARDS + PAGE BANNER
+    7. ABOUT PAGE (TABLE + LISTS + AUDIO)
+    8. PROJECT CARDS
+    9. PLANNER
+   10. CONTACT FORM
+   11. FOOTER
+   12. ANIMATIONS
+   13. RESPONSIVE DESIGN (MOBILE)
+
+  PDF CSS requirements shown in this file (search for "PDF:"):
+    - External CSS stylesheet  -> this file (linked in the <head> of every page)
+    - Consistent colour scheme -> section 1
+    - Navigation styling       -> section 3
+    - Flexbox                  -> sections 3, 4, 5, 7, 9, 10, 11
+    - CSS Grid                 -> sections 5, 6, 8, 9, 10
+    - Animations / transitions -> section 12 (keyframes) + "transition" on hover effects everywhere
+    - Responsive design        -> section 13 (@media rules)
+    - Mobile-friendly interface -> section 13 + the hamburger menu in section 3
+  =========================================================
+*/
+
+
+/* ===================== 1. COLOUR SCHEME ===================== */
+/* PDF: Consistent colour scheme
+   All the colours (and fonts) are stored here once. Change a value
+   here and it changes everywhere on the site. */
+:root {
+  --green: #a8e6a0;          /* LIGHT GREEN - the main colour (highlights, pills, buttons on hover) */
+  --green-soft: #e7f7e2;     /* very pale green - soft backgrounds */
+  --green-deep: #2f6d3c;     /* dark green - green TEXT (light green text is hard to read on white) */
+  --ink: #13201a;            /* almost-black green - headings, dark panels, footer */
+  --muted: #5b6a61;          /* grey-green - secondary text */
+  --paper: #f7f8f3;          /* warm off-white - page background */
+  --white: #ffffff;
+  --line: #e1e6dc;           /* thin borders */
+  --error: #c4432f;          /* red - error messages */
+
+  --radius: 18px;            /* roundness of cards */
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --shadow: 0 1px 2px rgba(19, 32, 26, 0.04), 0 12px 32px rgba(19, 32, 26, 0.08);
+}
+
+
+/* ===================== 2. BASIC RESET + PAGE SETUP ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* makes width/height easier to work with */
+}
+
+html {
+  scroll-behavior: smooth;  /* links like "#top" scroll smoothly */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Big headings use the elegant serif font */
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Words inside <em> in a heading turn italic and dark green */
+h1 em, h2 em {
+  font-style: italic;
+  color: var(--green-deep);
+}
+
+/* Colour of text when you highlight it with the mouse */
+::selection {
+  background-color: var(--green);
+  color: var(--ink);
+}
+
+/* Images never grow wider than their box (helps on mobile) */
+img {
+  max-width: 100%;
+  display: block;
+  background-color: var(--green-soft);  /* pale green box shows until you add your own image */
+  color: transparent;   /* hides the "alt" text drawn over a missing image (screen readers still read it) */
+}
+
+
+/* ===================== 3. NAVIGATION STYLING ===================== */
+/* PDF: Navigation styling  +  PDF: Flexbox
+   The header is a floating "pill" with a frosted-glass look. */
+.site-header {
+  display: flex;                   /* PDF: Flexbox - logo on the left, menu on the right */
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;                /* header stays at the top when you scroll */
+  top: 16px;
+  z-index: 100;
+  width: calc(100% - 32px);
+  max-width: 1120px;
+  margin: 16px auto 0;
+  padding: 8px 8px 8px 18px;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);     /* blurs whatever scrolls behind the header */
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: box-shadow 0.3s;     /* PDF: Transitions */
+}
+
+/* JS adds "scrolled" once you scroll down, giving the header a soft shadow */
+.site-header.scrolled {
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* The little green circle with your initials */
+.logo-mark {
+  display: grid;
+  place-items: center;              /* CSS GRID trick to centre the letter */
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--green);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.nav-links {
+  list-style: none;      /* removes the bullet points */
+  display: flex;         /* FLEXBOX: puts the links in a row */
+  gap: 4px;
+}
+
+.nav-links a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: 999px;
+  transition: background-color 0.25s, color 0.25s;   /* TRANSITION: smooth colour change on hover */
+}
+
+/* What a link looks like when you hover over it */
+.nav-links a:hover {
+  color: var(--ink);
+  background-color: var(--green-soft);
+}
+
+/* The link for the page you are currently on (class="active" in the HTML) */
+.nav-links a.active {
+  color: var(--ink);
+  background-color: var(--green);
+}
+
+/* PDF: Mobile-friendly interface - the hamburger menu button, hidden on big screens, shown on mobile (see section 13) */
+.menu-toggle {
+  display: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--green-soft);
+  cursor: pointer;
+}
+
+/* The two lines of the hamburger icon */
+.menu-toggle span {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 2px;
+  background-color: var(--ink);
+  transition: transform 0.3s;
+}
+
+.menu-toggle span:first-child { top: 16px; }
+.menu-toggle span:last-child  { top: 24px; }
+
+/* When the menu is open (JS adds "open"), the two lines turn into an X */
+.menu-toggle.open span:first-child { transform: translateY(4px) rotate(45deg); }
+.menu-toggle.open span:last-child  { transform: translateY(-4px) rotate(-45deg); }
+
+
+/* ===================== 4. BUTTONS ===================== */
+/* PDF: Animations or transitions + Flexbox - buttons use inline-flex and change colour smoothly on hover */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--ink);
+  color: var(--white);
+  padding: 14px 24px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.25s, background-color 0.25s, color 0.25s, border-color 0.25s;  /* TRANSITION */
+}
+
+/* On hover the button turns light green and lifts up a little */
+.btn:hover {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* The little arrow inside a button slides right on hover */
+.btn .arrow {
+  transition: transform 0.25s;
+}
+
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* A see-through version of the button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--ink);
+  border-color: rgba(19, 32, 26, 0.2);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  border-color: var(--ink);
+}
+
+/* Light green button used on the dark footer */
+.btn-light {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.btn-light:hover {
+  background-color: var(--white);
+  border-color: var(--white);
+}
+
+
+/* ===================== 5. HOME PAGE (HERO + MARQUEE) ===================== */
+/* PDF: Professional-looking layout  +  PDF: CSS Grid */
+.hero {
+  display: grid;                        /* PDF: CSS Grid - text on the left, photo on the right */
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 64px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 80px 24px 72px;
+}
+
+/* Small rounded label above the big heading */
+.eyebrow {
+  display: inline-flex;                 /* PDF: Flexbox */
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 12px;
+  margin-bottom: 28px;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.greeting {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Small green dot that gently pulses (ANIMATION, see section 12) */
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--green-deep);
+  animation: pulse 2s infinite;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);   /* clamp() = grows with the screen but never too small/big */
+  margin-bottom: 24px;
+  animation: fadeIn 0.9s ease both;
+}
+
+/* Your name gets a light green "highlighter pen" stroke that draws itself in */
+.highlight {
+  font-style: italic;
+  color: var(--ink);
+  padding: 0 0.08em;
+  background-image: linear-gradient(var(--green), var(--green));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 0.35em;            /* starts with no width ... */
+  animation: highlight 0.8s 0.6s ease forwards;   /* ... and grows to full width (section 12) */
+}
+
+.welcome {
+  max-width: 34em;
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Little facts under the buttons (a list) */
+.hero-meta {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hero-meta strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Photo area */
+.hero-photo {
+  position: relative;
+  isolation: isolate;          /* keeps the green arch (below) behind the photo */
+  justify-self: end;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* A light green arch sitting behind the photo, slightly offset */
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 22px -18px -18px 22px;
+  border-radius: 999px 999px 24px 24px;
+  background-color: var(--green);
+  z-index: -1;
+}
+
+/* The photo frame is an ARCH shape (round top, slightly rounded bottom) */
+.photo-frame {
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 24px 24px;
+  overflow: hidden;
+  background-color: var(--green-soft);
+  box-shadow: var(--shadow);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fills the frame without stretching your photo */
+}
+
+/* Round white badge with text spinning around it */
+.badge {
+  position: absolute;
+  left: -40px;
+  bottom: 48px;
+  display: grid;
+  place-items: center;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;   /* ANIMATION: slowly rotates */
+}
+
+.badge text {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.badge-center {
+  font-size: 1.4rem;
+  color: var(--green-deep);
+}
+
+/* Moving strip of words (marquee) under the hero */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background-color: var(--white);
+  padding: 18px 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  animation: marquee 32s linear infinite;   /* ANIMATION: slides left forever */
+}
+
+.marquee-track span {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  white-space: nowrap;
+}
+
+.marquee-track .star {
+  color: var(--green-deep);
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  align-self: center;
+}
+
+.intro-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  background-color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+
+/* ===================== 6. SECTIONS + CARDS + PAGE BANNER ===================== */
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 96px 24px;
+}
+
+.section-head {
+  margin-bottom: 40px;
+}
+
+/* Small label above headings, e.g. "01 — About" */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* The short line before the label */
+.section-label::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background-color: var(--ink);
+}
+
+.section h2 {
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+  margin-top: 14px;
+}
+
+.section-head p {
+  margin-top: 16px;
+}
+
+/* PDF: CSS Grid - a two-column layout (heading left, content right) */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
+}
+
+.lead {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* PDF: CSS Grid - the cards arrange themselves into columns automatically */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.card {
+  position: relative;
+  background-color: var(--white);
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.3s, border-color 0.3s;   /* TRANSITION */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green);
+}
+
+/* Small green dot in the top-right corner of each card */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--green);
+}
+
+.card h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.card p {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+/* Title banner at the top of each inner page (full width, faint grid pattern) */
+.page-banner {
+  position: relative;
+  isolation: isolate;                 /* keeps the background shapes behind the text */
+  overflow: hidden;
+  /* the max() keeps the text lined up with the rest of the page on wide screens */
+  padding: 96px max(24px, calc((100% - 1120px) / 2 + 24px)) 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Faint grid lines that fade out (made with gradients, no image needed) */
+.page-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at 75% 20%, #000 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse at 75% 20%, #000 0%, transparent 65%);
+}
+
+/* A soft light green glow in the corner */
+.page-banner::after {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: var(--green);
+  filter: blur(90px);
+  opacity: 0.45;
+}
+
+.page-banner h1 {
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  margin-top: 18px;
+  animation: fadeIn 0.9s ease both;    /* ANIMATION */
+}
+
+.page-banner p {
+  max-width: 32em;
+  margin-top: 18px;
+  font-size: 1.15rem;
+  color: var(--muted);
+  animation: fadeIn 0.9s 0.15s ease both;
+}
+
+
+/* ===================== 7. ABOUT PAGE (TABLE + LISTS + AUDIO) ===================== */
+/* Table styling (PDF: Tables) */
+.table-wrapper {
+  overflow-x: auto;    /* lets the table scroll sideways on small phones */
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+}
+
+table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 18px 22px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--green-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+}
+
+td {
+  border-top: 1px solid var(--line);
+}
+
+td:first-child {
+  font-weight: 600;
+}
+
+/* Rows light up softly when you hover over them */
+tbody tr {
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: var(--paper);
+}
+
+/* Career aspirations shown as a big statement with a green bar */
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.3;
+  padding-left: 28px;
+  border-left: 3px solid var(--green);
+}
+
+/* PDF: Flexbox - skills list shown as "pills" */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 500;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+/* Green dot before each skill */
+.skills-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--green-deep);
+}
+
+.skills-list li:hover {
+  background-color: var(--green);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+/* Hobbies list with big serif numbers (01, 02, 03 ...) made by CSS counters */
+.hobbies-list {
+  list-style: none;
+  counter-reset: hobby;
+}
+
+.hobbies-list li {
+  counter-increment: hobby;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.1rem;
+  transition: padding-left 0.25s;
+}
+
+.hobbies-list li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.hobbies-list li::before {
+  content: counter(hobby, decimal-leading-zero);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--green-deep);
+  min-width: 2em;
+}
+
+.hobbies-list li:hover {
+  padding-left: 10px;
+}
+
+/* Dark card holding the audio player */
+.audio-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 32px;
+  background-color: var(--ink);
+  color: var(--white);
+  border-radius: 24px;
+}
+
+.audio-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--green);
+  color: var(--ink);
+  font-size: 1.4rem;
+}
+
+.audio-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.audio-text h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.audio-text h2 em {
+  color: var(--green);
+}
+
+.audio-text p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.audio-card audio {
+  width: 100%;
+  max-width: 360px;
+}
+
+
+/* ===================== 8. PROJECT CARDS ===================== */
+/* PDF: CSS Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.project-card {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 10px;
+  transition: transform 0.35s, box-shadow 0.35s;   /* TRANSITION */
+}
+
+/* Card lifts up when you hover over it */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.project-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--green-soft);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+
+/* Screenshot zooms in slightly on hover */
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* "No. 01" label on top of the image */
+.project-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 12px;
+  background-color: var(--white);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-info {
+  padding: 22px 14px 14px;
+}
+
+/* Small "HTML / CSS / JS" tags (a list) */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tags li {
+  padding: 3px 10px;
+  background-color: var(--green-soft);
+  color: var(--green-deep);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-info h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* "View project ↗" link with a light green underline */
+.project-link {
+  display: inline-flex;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--green);
+}
+
+.project-link .arrow {
+  transition: transform 0.25s;
+}
+
+.project-link:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* ===================== 9. PLANNER ===================== */
+/* PDF: CSS Grid - summary panel on the left, task list on the right */
+.planner-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Dark summary panel */
+.planner-summary {
+  position: sticky;           /* stays in view while you scroll a long list */
+  top: 110px;
+  padding: 32px;
+  background-color: var(--ink);
+  color: var(--white);
+  border-radius: 24px;
+}
+
+.planner-summary .section-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.planner-summary .section-label::before {
+  background-color: var(--green);
+}
+
+.today {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin: 16px 0 32px;
+}
+
+/* Progress bar: grey track with a light green fill (JS sets the width) */
+.progress {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 999px;
+  transition: width 0.5s ease;   /* TRANSITION: bar grows smoothly */
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.progress-text strong {
+  color: var(--green);
+}
+
+/* White panel with the form and list */
+.planner-main {
+  padding: 28px;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+
+/* PDF: Flexbox - text box and button side by side */
+.task-form {
+  display: flex;
+  gap: 10px;
+}
+
+.task-form input {
+  flex: 1;              /* input takes up all the spare space */
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--paper);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: var(--green-deep);
+  box-shadow: 0 0 0 4px var(--green-soft);   /* soft green glow when you click into it */
+}
+
+.task-count {
+  margin: 20px 0 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.task-list {
+  list-style: none;
+}
+
+/* One task in the list */
+.task-item {
+  display: flex;                    /* PDF: Flexbox - [circle] task text [delete] */
+  align-items: center;
+  gap: 14px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line);
+  animation: slideIn 0.3s ease;     /* ANIMATION: new tasks slide in (see section 12) */
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item span {
+  flex: 1;
+  transition: color 0.25s;
+}
+
+/* The round "done" button on the left of each task */
+.done-btn {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #c3cbbe;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: transparent;               /* the ✓ is hidden until the task is done */
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.done-btn:hover {
+  border-color: var(--green-deep);
+  color: var(--green-deep);
+}
+
+/* A task that has been marked as done (JS adds the "completed" class) */
+.task-item.completed .done-btn {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--ink);
+}
+
+.task-item.completed span {
+  text-decoration: line-through;    /* puts a line through finished tasks */
+  color: var(--muted);
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0;                       /* hidden until you hover the task */
+  transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.task-item:hover .delete-btn,
+.delete-btn:focus {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background-color: #fbe9e6;
+  color: var(--error);
+}
+
+/* Message shown when there are no tasks (JS adds it) */
+.task-empty {
+  padding: 40px 0 28px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+
+/* ===================== 10. CONTACT FORM ===================== */
+/* PDF: CSS Grid - form on the left, contact details on the right */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;   /* PDF: Flexbox - stacks the fields on top of each other */
+  gap: 20px;
+  padding: 32px;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+
+/* PDF: CSS Grid - Name and Email side by side */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* One label + input + error message */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background-color: var(--paper);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-deep);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px var(--green-soft);
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* Dark panel with other ways to reach you */
+.contact-details {
+  padding: 32px;
+  background-color: var(--ink);
+  color: var(--white);
+  border-radius: 24px;
+}
+
+.contact-details h2 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.contact-details h2 em {
+  color: var(--green);
+}
+
+.contact-details > p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+}
+
+.contact-details ul {
+  list-style: none;
+}
+
+.contact-details li {
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Small grey label above each link ("Email", "Phone" ...) */
+.contact-details li span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-details a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+  transition: color 0.2s;
+}
+
+.contact-details a:hover {
+  color: var(--green);
+}
+
+/* Error and success messages (text is added by JavaScript) */
+.error {
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
+/* Hide empty message boxes so they don't take up space */
+.error:empty,
+.success:empty {
+  display: none;
+}
+
+.success {
+  padding: 14px 18px;
+  background-color: var(--green-soft);
+  color: var(--green-deep);
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Red border on a field that has an error (JS adds the "invalid" class) */
+.invalid {
+  border-color: var(--error) !important;
+  background-color: #fdf3f1 !important;
+}
+
+
+/* ===================== 11. FOOTER ===================== */
+/* PDF: Consistent colour scheme - same ink + light green colours as the rest of the site */
+.site-footer {
+  margin-top: 40px;
+  padding: 80px max(24px, calc((100% - 1120px) / 2 + 24px)) 32px;
+  background-color: var(--ink);
+  color: var(--white);
+}
+
+/* PDF: Flexbox - big sentence on the left, button on the right */
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-big {
+  max-width: 13em;
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.footer-big em {
+  color: var(--green);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* ===================== 12. ANIMATIONS ===================== */
+/* PDF: Animations or transitions */
+
+/* Fade in and move up a little */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from the left (used for new planner tasks) */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* The highlighter stroke under your name grows from left to right */
+@keyframes highlight {
+  to {
+    background-size: 100% 0.35em;
+  }
+}
+
+/* Full turn - used by the spinning badge */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Moves the marquee words left by half its width (the words are written twice, so it loops smoothly) */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* A soft green ring grows out of the dot and fades away */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(47, 109, 60, 0.45); }
+  100% { box-shadow: 0 0 0 10px rgba(47, 109, 60, 0); }
+}
+
+/* Mobile menu drops down */
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SCROLL REVEAL: things with class="reveal" start hidden and slide up
+   when they scroll into view. JS (main.js) adds the "visible" class.
+   The ".js" part means this only happens if JavaScript is running,
+   so nothing stays hidden if JS is turned off. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect people who turned on "reduce motion" in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .highlight {
+    background-size: 100% 0.35em;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ===================== 13. RESPONSIVE DESIGN (MOBILE) ===================== */
+/* PDF: Responsive design  +  PDF: Mobile-friendly interface */
+
+/* Big screens only: the middle project card sits a bit lower (staggered look) */
+@media (min-width: 960px) {
+  .project-card:nth-child(3n + 2) {
+    margin-top: 56px;
+  }
+}
+
+/* Tablets and smaller (900px wide or less) */
+@media (max-width: 900px) {
+
+  /* Hero: photo on top, text below */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 24px 64px;
+  }
+
+  .hero-photo {
+    order: -1;                 /* moves the photo above the text */
+    justify-self: center;
+    max-width: 300px;
+  }
+
+  .badge {
+    left: -24px;
+    bottom: 32px;
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Two-column layouts become one column */
+  .split,
+  .planner-layout,
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .planner-summary {
+    position: static;
+  }
+}
+
+/* Phones and small tablets (768px wide or less) */
+@media (max-width: 768px) {
+
+  /* Show the hamburger button */
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header {
+    top: 10px;
+    margin-top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  /* Hide the menu and stack the links on top of each other */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+  }
+
+  /* When JS adds the "show" class, the menu appears */
+  .nav-links.show {
+    display: flex;
+    animation: dropIn 0.25s ease;
+  }
+
+  .nav-links a {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 64px 16px;
+  }
+
+  .hero {
+    padding: 40px 16px 56px;
+  }
+
+  .page-banner {
+    padding: 64px 16px 48px;
+  }
+
+  .site-footer {
+    padding: 56px 16px 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form,
+  .contact-details,
+  .planner-summary,
+  .planner-main,
+  .audio-card {
+    padding: 24px;
+  }
+
+  /* Touch screens can't hover, so always show the delete button */
+  .delete-btn {
+    opacity: 1;
+  }
+}
+
+/* Small phones (480px wide or less) */
+@media (max-width: 480px) {
+
+  /* Planner input and button stack on top of each other */
+  .task-form {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .marquee-track span {
+    font-size: 1.4rem;
+  }
+}

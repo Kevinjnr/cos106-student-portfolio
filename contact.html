@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+  =========================================================
+  CONTACT PAGE  (contact.html)
+  PDF Requirement 5: Contact Page
+    - Form with Name, Email Address, Phone Number, Message -> see "CONTACT FORM"
+    - JavaScript validation -> all in js/contact.js
+        * No field is empty
+        * Email format is valid
+        * Phone number contains only digits
+  =========================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- PDF: Responsive design + Mobile-friendly interface - this line makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT ME: your name -->
+  <title>Contact | Your Name</title>
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- PDF: External CSS stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+  <!-- ===================== HEADER + NAVIGATION MENU ===================== -->
+  <!-- PDF: Proper semantic HTML - <header> holds the logo and the menu -->
+  <header class="site-header">
+    <!-- EDIT ME: your initials + name -->
+    <a href="index.html" class="logo"><span class="logo-mark">Y</span>Your Name</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <!-- PDF: Navigation menu + Hyperlinks + Lists (a semantic <nav> holding a <ul> list of links) -->
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PDF: Proper semantic HTML - <main> holds the main content of the page -->
+  <main>
+
+    <!-- Page title banner. PDF: Proper semantic HTML - each part of the page is a <section> -->
+    <section class="page-banner">
+      <span class="section-label">Contact</span>
+      <h1>Let's <em>talk.</em></h1>
+      <p>Have a question, an idea or an opportunity? Send me a message and I'll get back to you.</p>
+    </section>
+
+    <!-- PDF: Proper semantic HTML - <section>. It uses CSS Grid to put the form and contact details side by side -->
+    <section class="section contact-wrapper">
+
+      <!-- ===================== CONTACT FORM ===================== -->
+      <!-- PDF: Forms. "novalidate" turns off the browser's own checks so OUR JavaScript does the validation -->
+      <form id="contactForm" class="contact-form" novalidate>
+
+        <!-- Name and Email sit side by side on big screens -->
+        <div class="form-row">
+          <!-- PDF: Name field -->
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your full name">
+            <!-- Each <small> is where JS shows the error for that field -->
+            <small class="error" id="nameError"></small>
+          </div>
+
+          <!-- PDF: Email Address field -->
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com">
+            <small class="error" id="emailError"></small>
+          </div>
+        </div>
+
+        <!-- PDF: Phone Number field -->
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="08012345678">
+          <small class="error" id="phoneError"></small>
+        </div>
+
+        <!-- PDF: Message field -->
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="6" placeholder="Type your message here..."></textarea>
+          <small class="error" id="messageError"></small>
+        </div>
+
+        <button type="submit" class="btn">Send Message <span class="arrow">&rarr;</span></button>
+
+        <!-- PDF: Dynamic content updates - success message shows here after the form passes validation (filled by JS) -->
+        <p class="success" id="successMessage"></p>
+      </form>
+
+      <!-- ===================== CONTACT DETAILS ===================== -->
+      <!-- PDF: Proper semantic HTML - <aside> = extra information next to the form -->
+      <aside class="contact-details">
+        <h2>Other ways <em>to reach me</em></h2>
+        <p>I usually reply within a day.</p>
+        <!-- EDIT ME: put your real details. These are hyperlinks (PDF: Hyperlinks) -->
+        <ul>
+          <li><span>Email</span><a href="mailto:youremail@example.com">youremail@example.com</a></li>
+          <li><span>Phone</span><a href="tel:+2348000000000">+234 800 000 0000</a></li>
+          <li><span>GitHub</span><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+          <li><span>LinkedIn</span><a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></li>
+        </ul>
+      </aside>
+
+    </section>
+
+  </main>
+
+  <!-- PDF: Proper semantic HTML - <footer> at the bottom of every page -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-big">Thanks for <em>stopping by.</em></p>
+      <!-- "#top" scrolls back to the top of this page -->
+      <a href="#top" class="btn btn-light">Back to top <span class="arrow">&uarr;</span></a>
+    </div>
+    <div class="footer-bottom">
+      <!-- EDIT ME: your name -->
+      <p>&copy; <span id="year">2026</span> Your Name. All rights reserved.</p>
+      <p>Built with HTML, CSS &amp; JavaScript for COS 106.</p>
+    </div>
+  </footer>
+
+  <!-- main.js = menu + footer year,  contact.js = form validation -->
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+PUT YOUR IMAGES IN THIS FOLDER
+
+profile.jpg   -> your photo (home page)
+project1.jpg  -> screenshot for project 1
+project2.jpg  -> screenshot for project 2
+project3.jpg  -> screenshot for project 3
+
+If your file has a different name (e.g. me.png), change the src="" in the HTML to match.
+You can delete this note once your images are in.
