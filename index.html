@@ -47,13 +47,20 @@
     </nav>
   </header>
 
-  <!-- PDF: Proper semantic HTML - <main> holds the main content of the page -->
+  <!--  Proper semantic HTML - <main> holds the main content of the page -->
   <main>
 
     <!-- ===================== HERO SECTION ===================== -->
-    <!-- PDF: Homepage - student name, photograph and welcome message. PDF: Professional-looking layout (CSS Grid, see style.css section 5) -->
+    <!--  Homepage - student name, photograph and welcome message.  Professional-looking layout (CSS Grid, see style.css section 5) -->
     <section class="hero">
       <div class="hero-text">
+
+        <!-- Greeting pill. JS in js/main.js (section 2) changes "Hello!" to
+             Good morning / afternoon / evening based on the time -->
+        <p class="eyebrow">
+          <span class="greeting" id="greeting">Hello!</span>
+          Thanks for stopping by
+        </p>
 
         <!-- About me -->
         <h1>Hi, I'm <span class="highlight">Victor</span> &mdash; a software engineering student who loves building for the web.</h1>

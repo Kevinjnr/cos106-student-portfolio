@@ -20,13 +20,13 @@ document.documentElement.classList.add("js");
 
 
 // ===================== 1. MOBILE MENU =====================
-// PDF: Event handling + DOM manipulation
+// Event handling + DOM manipulation
 
 // Find the hamburger button and the list of links on the page
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-// PDF: Event handling - run this code every time the button is clicked
+// Event handling - run this code every time the button is clicked
 menuToggle.addEventListener("click", function () {
   // DOM MANIPULATION: add the "show" class if it's missing, remove it if it's there.
   // The CSS (section 13 in style.css) shows the menu when "show" is on.
@@ -39,16 +39,39 @@ menuToggle.addEventListener("click", function () {
   menuToggle.setAttribute("aria-expanded", isOpen);
 });
 
-// ===================== 2. FOOTER YEAR =====================
-// PDF: DOM manipulation
+
+// ===================== 2. GREETING MESSAGE =====================
+// Changes "Hello!" on the home page to Good morning / afternoon / evening
+
+// Find the greeting text. Only the home page has it, so on other pages this is null.
+const greeting = document.getElementById("greeting");
+
+// Only run the code if the greeting exists on this page
+if (greeting) {
+  // Get the current hour from the computer's clock (0 to 23)
+  const hour = new Date().getHours();
+
+  // Pick the right message based on the time
+  if (hour < 12) {
+    greeting.textContent = "Good morning!";      // before 12pm
+  } else if (hour < 17) {
+    greeting.textContent = "Good afternoon!";    // 12pm to 4:59pm
+  } else {
+    greeting.textContent = "Good evening!";      // 5pm and later
+  }
+}
+
+
+// ===================== 3. FOOTER YEAR =====================
+// DOM manipulation
 // Puts the current year in the footer so you never have to update it by hand
 
 const yearSpan = document.getElementById("year");
 yearSpan.textContent = new Date().getFullYear();
 
 
-// ===================== 3. HEADER SHADOW ON SCROLL =====================
-// PDF: Event handling
+// ===================== 4. HEADER SHADOW ON SCROLL =====================
+//  Event handling
 // Adds a soft shadow under the header once you scroll down a little
 
 const siteHeader = document.querySelector(".site-header");
@@ -63,8 +86,8 @@ window.addEventListener("scroll", function () {
 });
 
 
-// ===================== 4. SCROLL REVEAL =====================
-// PDF: Animations + DOM manipulation
+// ===================== 5. SCROLL REVEAL =====================
+// Animations + DOM manipulation
 // Every element with class="reveal" fades in when it scrolls onto the screen.
 
 // Get ALL the elements with the "reveal" class (this gives us a list)

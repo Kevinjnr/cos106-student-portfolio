@@ -1,7 +1,7 @@
 /*
   =========================================================
   contact.js  -  contact form validation (only used on contact.html)
-  PDF Requirement 5 + PDF: Form validation
+  PDF Requirement 5 +  Form validation
 
   The form is checked when you press "Send Message":
     1. No field is empty
@@ -50,7 +50,7 @@ function clearError(input, errorId) {
 
 
 // ===================== WHEN THE FORM IS SUBMITTED =====================
-// PDF: Event handling
+// Event handling
 contactForm.addEventListener("submit", function (event) {
   // Stop the page from refreshing
   event.preventDefault();

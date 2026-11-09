@@ -1,7 +1,6 @@
 /*
   =========================================================
   planner.js  -  the Academic Planner (only used on planner.html)
-  PDF Requirement 4 + PDF: Interactive task management system
 
   How it works, in simple words:
     - All tasks are kept in an ARRAY called "tasks".
@@ -11,7 +10,6 @@
     - saveTasks() keeps the tasks in the browser so they are still
       there when you refresh the page.
 
-  PDF requirements shown in this file:
     - Add tasks                        -> addTask()
     - Mark tasks as completed          -> toggleTask() + the round button in showTasks()
     - Delete tasks                     -> deleteTask() + the "Delete" button in showTasks()
@@ -26,7 +24,7 @@
 
 
 // ===================== GET THE HTML ELEMENTS =====================
-// PDF: DOM manipulation - grab the parts of planner.html we need to work with
+//  DOM manipulation - grab the parts of planner.html we need to work with
 const taskForm = document.getElementById("taskForm");         // the form
 const taskInput = document.getElementById("taskInput");       // the text box
 const taskList = document.getElementById("taskList");         // the <ul> where tasks go
@@ -38,13 +36,13 @@ const todayDate = document.getElementById("todayDate");       // today's date in
 
 
 // ===================== THE TASKS ARRAY =====================
-// PDF: Arrays
+//  Arrays
 // Load saved tasks from the browser. If there are none yet, start with an empty array [].
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
 // ===================== SHOW TODAY'S DATE =====================
-// PDF: Dynamic content updates
+//  Dynamic content updates
 // Writes something like "Wednesday, 21 October" in the summary panel
 todayDate.textContent = new Date().toLocaleDateString("en-GB", {
   weekday: "long",
@@ -54,7 +52,7 @@ todayDate.textContent = new Date().toLocaleDateString("en-GB", {
 
 
 // ===================== SAVE TASKS =====================
-// PDF: Functions
+//  Functions
 // Saves the tasks array in the browser (localStorage) so it survives a page refresh
 function saveTasks() {
   // localStorage can only store text, so we turn the array into text first
@@ -63,7 +61,7 @@ function saveTasks() {
 
 
 // ===================== SHOW TASKS ON THE PAGE =====================
-// PDF: DOM manipulation + Dynamic content updates
+//  DOM manipulation + Dynamic content updates
 // This function clears the list and builds it again from the tasks array
 function showTasks() {
   // Empty the list first so we don't show the same task twice
@@ -81,7 +79,7 @@ function showTasks() {
   // "task" is the task itself, "index" is its position (0, 1, 2 ...)
   tasks.forEach(function (task, index) {
 
-    // PDF: DOM manipulation - create a new <li> for this task
+    //  DOM manipulation - create a new <li> for this task
     const li = document.createElement("li");
     li.className = "task-item";
 
@@ -98,7 +96,7 @@ function showTasks() {
     doneBtn.setAttribute("aria-label", task.done ? "Mark as not done" : "Mark as done");
     doneBtn.title = task.done ? "Undo" : "Mark as done";
 
-    // PDF: Event handling + Mark tasks as completed - when the round button is clicked, mark this task as completed
+    //  Event handling + Mark tasks as completed - when the round button is clicked, mark this task as completed
     doneBtn.addEventListener("click", function () {
       toggleTask(index);
     });
@@ -112,7 +110,7 @@ function showTasks() {
     deleteBtn.className = "delete-btn";
     deleteBtn.textContent = "Delete";
 
-    // PDF: Event handling + Delete tasks - when "Delete" is clicked, remove this task
+    //  Event handling + Delete tasks - when "Delete" is clicked, remove this task
     deleteBtn.addEventListener("click", function () {
       deleteTask(index);
     });
@@ -132,7 +130,7 @@ function showTasks() {
 
 
 // ===================== UPDATE THE COUNTER + PROGRESS BAR =====================
-// PDF: Dynamic content updates
+//  Dynamic content updates
 function updateCount() {
   // Count how many tasks are done using filter()
   const doneCount = tasks.filter(function (task) {
@@ -159,7 +157,7 @@ function updateCount() {
 
 
 // ===================== ADD A TASK =====================
-// PDF: Add tasks
+//  Add tasks
 function addTask(text) {
   // push() adds the new task to the END of the array
   tasks.push({ text: text, done: false });
@@ -169,7 +167,7 @@ function addTask(text) {
 
 
 // ===================== MARK TASK AS COMPLETED =====================
-// PDF: Mark tasks as completed
+//  Mark tasks as completed
 function toggleTask(index) {
   // Flip true -> false or false -> true
   tasks[index].done = !tasks[index].done;
@@ -179,7 +177,7 @@ function toggleTask(index) {
 
 
 // ===================== DELETE A TASK =====================
-// PDF: Delete tasks
+//  Delete tasks
 function deleteTask(index) {
   // splice(index, 1) removes 1 item from the array at that position
   tasks.splice(index, 1);
@@ -189,7 +187,7 @@ function deleteTask(index) {
 
 
 // ===================== WHEN THE FORM IS SUBMITTED =====================
-// PDF: Event handling
+//  Event handling
 taskForm.addEventListener("submit", function (event) {
   // Stop the page from refreshing (that's what forms do by default)
   event.preventDefault();

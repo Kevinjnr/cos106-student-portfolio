@@ -1,7 +1,7 @@
 /*
   =========================================================
   style.css  -  ONE stylesheet for the whole website
-  PDF: External CSS stylesheet  (every page links to this file)
+   External CSS stylesheet  (every page links to this file)
 
   Design idea: calm and "editorial" - warm off-white paper,
   deep green-black ink, and LIGHT GREEN as the main colour
@@ -23,7 +23,7 @@
    12. ANIMATIONS
    13. RESPONSIVE DESIGN (MOBILE)
 
-  PDF CSS requirements shown in this file (search for "PDF:"):
+  PDF CSS requirements shown in this file (search for ""):
     - External CSS stylesheet  -> this file (linked in the <head> of every page)
     - Consistent colour scheme -> section 1
     - Navigation styling       -> section 3
@@ -37,7 +37,7 @@
 
 
 /* ===================== 1. COLOUR SCHEME ===================== */
-/* PDF: Consistent colour scheme
+/*  Consistent colour scheme
    All the colours (and fonts) are stored here once. Change a value
    here and it changes everywhere on the site. */
 :root {
@@ -114,7 +114,7 @@ img {
 /* ===================== 3. NAVIGATION STYLING ===================== */
 /* The header is a floating "pill" with a frosted-glass look. */
 .site-header {
-  display: flex;                   /* PDF: Flexbox - logo on the left, menu on the right */
+  display: flex;                   /*  Flexbox - logo on the left, menu on the right */
   justify-content: space-between;
   align-items: center;
   position: sticky;                /* header stays at the top when you scroll */
@@ -129,7 +129,7 @@ img {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   border-radius: 999px;
-  transition: box-shadow 0.3s;     /* PDF: Transitions */
+  transition: box-shadow 0.3s;     /*  Transitions */
 }
 
 /* JS adds "scrolled" once you scroll down, giving the header a soft shadow */
@@ -189,7 +189,7 @@ img {
   background-color: var(--green);
 }
 
-/* PDF: Mobile-friendly interface - the hamburger menu button, hidden on big screens, shown on mobile (see section 13) */
+/*  Mobile-friendly interface - the hamburger menu button, hidden on big screens, shown on mobile (see section 13) */
 .menu-toggle {
   display: none;
   position: relative;
@@ -220,7 +220,7 @@ img {
 
 
 /* ===================== 4. BUTTONS ===================== */
-/* PDF: Animations or transitions + Flexbox - buttons use inline-flex and change colour smoothly on hover */
+/*  Animations or transitions + Flexbox - buttons use inline-flex and change colour smoothly on hover */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -281,9 +281,9 @@ img {
 
 
 /* ===================== 5. HOME PAGE (HERO + MARQUEE) ===================== */
-/* PDF: Professional-looking layout  +  PDF: CSS Grid */
+/*  Professional-looking layout  +   CSS Grid */
 .hero {
-  display: grid;                        /* PDF: CSS Grid - text on the left, photo on the right */
+  display: grid;                        /*  CSS Grid - text on the left, photo on the right */
   grid-template-columns: 1.25fr 0.75fr;
   align-items: center;
   gap: 64px;
@@ -294,30 +294,30 @@ img {
 
 /* Small rounded label above the big heading */
 .eyebrow {
-  display: inline-flex;                 /* PDF: Flexbox */
+  display: flex;                        /*  Flexbox */
   align-items: center;
-  gap: 10px;
-  padding: 6px 16px 6px 12px;
-  margin-bottom: 28px;
-  background-color: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
-.greeting {
-  color: var(--ink);
-  font-weight: 600;
+/* Short green line in front of the greeting */
+.eyebrow::before {
+  content: "";
+  width: 36px;
+  height: 2px;
+  background-color: var(--green-deep);
 }
 
-/* Small green dot that gently pulses (ANIMATION, see section 12) */
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--green-deep);
-  animation: pulse 2s infinite;
+/* "GOOD MORNING!" in dark green, bold */
+.greeting {
+  color: var(--green-deep);
+  font-weight: 600;
 }
 
 .hero h1 {
@@ -541,7 +541,7 @@ img {
   margin-top: 16px;
 }
 
-/* PDF: CSS Grid - a two-column layout (heading left, content right) */
+/*  CSS Grid - a two-column layout (heading left, content right) */
 .split {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -557,7 +557,7 @@ img {
   color: var(--muted);
 }
 
-/* PDF: CSS Grid - the cards arrange themselves into columns automatically */
+/*  CSS Grid - the cards arrange themselves into columns automatically */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -660,7 +660,7 @@ img {
 
 
 /* ===================== 7. ABOUT PAGE (TABLE + LISTS + AUDIO) ===================== */
-/* Table styling (PDF: Tables) */
+/* Table styling ( Tables) */
 .table-wrapper {
   overflow-x: auto;    /* lets the table scroll sideways on small phones */
   border: 1px solid var(--line);
@@ -714,7 +714,7 @@ tbody tr:hover {
   border-left: 3px solid var(--green);
 }
 
-/* PDF: Flexbox - skills list shown as "pills" */
+/*  Flexbox - skills list shown as "pills" */
 .skills-list {
   list-style: none;
   display: flex;
@@ -831,7 +831,7 @@ tbody tr:hover {
 
 
 /* ===================== 8. PROJECT CARDS ===================== */
-/* PDF: CSS Grid */
+/*  CSS Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -941,7 +941,7 @@ tbody tr:hover {
 
 
 /* ===================== 9. PLANNER ===================== */
-/* PDF: CSS Grid - summary panel on the left, task list on the right */
+/*  CSS Grid - summary panel on the left, task list on the right */
 .planner-layout {
   display: grid;
   grid-template-columns: 340px 1fr;
@@ -1010,7 +1010,7 @@ tbody tr:hover {
   border-radius: 24px;
 }
 
-/* PDF: Flexbox - text box and button side by side */
+/*  Flexbox - text box and button side by side */
 .task-form {
   display: flex;
   gap: 10px;
@@ -1046,7 +1046,7 @@ tbody tr:hover {
 
 /* One task in the list */
 .task-item {
-  display: flex;                    /* PDF: Flexbox - [circle] task text [delete] */
+  display: flex;                    /*  Flexbox - [circle] task text [delete] */
   align-items: center;
   gap: 14px;
   padding: 14px 4px;
@@ -1131,7 +1131,7 @@ tbody tr:hover {
 
 
 /* ===================== 10. CONTACT FORM ===================== */
-/* PDF: CSS Grid - form on the left, contact details on the right */
+/*  CSS Grid - form on the left, contact details on the right */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -1141,7 +1141,7 @@ tbody tr:hover {
 
 .contact-form {
   display: flex;
-  flex-direction: column;   /* PDF: Flexbox - stacks the fields on top of each other */
+  flex-direction: column;   /*  Flexbox - stacks the fields on top of each other */
   gap: 20px;
   padding: 32px;
   background-color: var(--white);
@@ -1149,7 +1149,7 @@ tbody tr:hover {
   border-radius: 24px;
 }
 
-/* PDF: CSS Grid - Name and Email side by side */
+/*  CSS Grid - Name and Email side by side */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1276,7 +1276,7 @@ tbody tr:hover {
 
 
 /* ===================== 11. FOOTER ===================== */
-/* PDF: Consistent colour scheme - same ink + light green colours as the rest of the site */
+/*  Consistent colour scheme - same ink + light green colours as the rest of the site */
 .site-footer {
   margin-top: 40px;
   padding: 80px max(24px, calc((100% - 1120px) / 2 + 24px)) 32px;
@@ -1284,7 +1284,7 @@ tbody tr:hover {
   color: var(--white);
 }
 
-/* PDF: Flexbox - big sentence on the left, button on the right */
+/*  Flexbox - big sentence on the left, button on the right */
 .footer-inner {
   display: flex;
   justify-content: space-between;
@@ -1318,7 +1318,7 @@ tbody tr:hover {
 
 
 /* ===================== 12. ANIMATIONS ===================== */
-/* PDF: Animations or transitions */
+/*  Animations or transitions */
 
 /* Fade in and move up a little */
 @keyframes fadeIn {
@@ -1417,7 +1417,7 @@ tbody tr:hover {
 
 
 /* ===================== 13. RESPONSIVE DESIGN (MOBILE) ===================== */
-/* PDF: Responsive design  +  PDF: Mobile-friendly interface */
+/*  Responsive design  +   Mobile-friendly interface */
 
 /* Big screens only: the middle project card sits a bit lower (staggered look) */
 @media (min-width: 960px) {
