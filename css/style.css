@@ -23,7 +23,6 @@
    12. ANIMATIONS
    13. RESPONSIVE DESIGN (MOBILE)
 
-  PDF CSS requirements shown in this file (search for ""):
     - External CSS stylesheet  -> this file (linked in the <head> of every page)
     - Consistent colour scheme -> section 1
     - Navigation styling       -> section 3
@@ -146,7 +145,7 @@ img {
   text-decoration: none;
 }
 
-/* The little green circle with your initials */
+/* The little green circle with My initials */
 .logo-mark {
   display: grid;
   place-items: center;              /* CSS GRID trick to centre the letter */
@@ -326,7 +325,7 @@ img {
   animation: fadeIn 0.9s ease both;
 }
 
-/* Your name gets a light green "highlighter pen" stroke that draws itself in */
+/* My name gets a light green "highlighter pen" stroke that draws itself in */
 .highlight {
   font-style: italic;
   color: var(--ink);
