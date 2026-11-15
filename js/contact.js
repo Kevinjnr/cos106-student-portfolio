@@ -1,14 +1,12 @@
 /*
   =========================================================
   contact.js  -  contact form validation (only used on contact.html)
-  PDF Requirement 5 +  Form validation
 
   The form is checked when you press "Send Message":
     1. No field is empty
     2. Email format is valid
     3. Phone number contains only digits
 
-  PDF requirements shown in this file:
     - Form validation         -> the whole "submit" handler below
     - No field is empty       -> every "=== """ check
     - Email format is valid   -> emailPattern

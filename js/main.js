@@ -7,7 +7,6 @@
     4. Header shadow when you scroll
     5. Scroll reveal animation
 
-  PDF JavaScript requirements shown in this file:
     - Event handling          -> sections 1 and 4 (click + scroll events)
     - DOM manipulation        -> sections 1, 3 and 5 (classList, textContent)
     - Dynamic content updates -> sections 2 and 3 (greeting + year change by themselves)

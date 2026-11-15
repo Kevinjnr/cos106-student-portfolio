@@ -56,4 +56,4 @@ audio/          Audio intro (home) and audio message (about)
 
 ## Running it
 
-No build step is needed. Open `index.html` in a browser, or view the live version on GitHub Pages. The site is hosted from the `main` branch, root folder.
+No build step is needed. Open `index.html` in a browser, or visit the live site deployed on [Vercel](https://victor-portfolio-pi-tan.vercel.app/).

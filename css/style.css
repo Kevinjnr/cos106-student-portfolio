@@ -1,12 +1,10 @@
 /*
   =========================================================
-  style.css  -  ONE stylesheet for the whole website
-   External CSS stylesheet  (every page links to this file)
+  style.css - styles I use across the whole website
 
-  Design idea: calm and "editorial" - warm off-white paper,
-  deep green-black ink, and LIGHT GREEN as the main colour
-  (used like a highlighter pen). Big serif headings + a clean
-  sans-serif for normal text.
+  I went for a calm look with warm off-white, dark green, and
+  light green highlights. I use serif headings and a clean,
+  easy-to-read font for the rest of the text.
 
   Quick map of this file (search for the titles in CAPS):
     1. COLOUR SCHEME (variables)
@@ -23,34 +21,24 @@
    12. ANIMATIONS
    13. RESPONSIVE DESIGN (MOBILE)
 
-    - External CSS stylesheet  -> this file (linked in the <head> of every page)
-    - Consistent colour scheme -> section 1
-    - Navigation styling       -> section 3
-    - Flexbox                  -> sections 3, 4, 5, 7, 9, 10, 11
-    - CSS Grid                 -> sections 5, 6, 8, 9, 10
-    - Animations / transitions -> section 12 (keyframes) + "transition" on hover effects everywhere
-    - Responsive design        -> section 13 (@media rules)
-    - Mobile-friendly interface -> section 13 + the hamburger menu in section 3
   =========================================================
 */
 
 
 /* ===================== 1. COLOUR SCHEME ===================== */
-/*  Consistent colour scheme
-   All the colours (and fonts) are stored here once. Change a value
-   here and it changes everywhere on the site. */
+/* I keep the colours and fonts here so I can update them across the site in one place. */
 :root {
-  --green: #a8e6a0;          /* LIGHT GREEN - the main colour (highlights, pills, buttons on hover) */
-  --green-soft: #e7f7e2;     /* very pale green - soft backgrounds */
-  --green-deep: #2f6d3c;     /* dark green - green TEXT (light green text is hard to read on white) */
-  --ink: #13201a;            /* almost-black green - headings, dark panels, footer */
-  --muted: #5b6a61;          /* grey-green - secondary text */
-  --paper: #f7f8f3;          /* warm off-white - page background */
+  --green: #a8e6a0;          /* light green for highlights, labels, and hover states */
+  --green-soft: #e7f7e2;     /* pale green for soft backgrounds */
+  --green-deep: #2f6d3c;     /* darker green for text that needs more contrast */
+  --ink: #13201a;            /* dark green for headings, panels, and the footer */
+  --muted: #5b6a61;          /* grey-green for secondary text */
+  --paper: #f7f8f3;          /* warm off-white for the page background */
   --white: #ffffff;
-  --line: #e1e6dc;           /* thin borders */
-  --error: #c4432f;          /* red - error messages */
+  --line: #e1e6dc;           /* colour for borders */
+  --error: #c4432f;          /* red for error messages */
 
-  --radius: 18px;            /* roundness of cards */
+  --radius: 18px;            /* rounded corners for cards */
   --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --shadow: 0 1px 2px rgba(19, 32, 26, 0.04), 0 12px 32px rgba(19, 32, 26, 0.08);
@@ -113,7 +101,7 @@ img {
 /* ===================== 3. NAVIGATION STYLING ===================== */
 /* The header is a floating "pill" with a frosted-glass look. */
 .site-header {
-  display: flex;                   /*  Flexbox - logo on the left, menu on the right */
+  display: flex;                   /* keeps the logo left and menu right */
   justify-content: space-between;
   align-items: center;
   position: sticky;                /* header stays at the top when you scroll */
@@ -128,7 +116,7 @@ img {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--line);
   border-radius: 999px;
-  transition: box-shadow 0.3s;     /*  Transitions */
+  transition: box-shadow 0.3s;     /* makes the shadow appear smoothly */
 }
 
 /* JS adds "scrolled" once you scroll down, giving the header a soft shadow */
@@ -148,7 +136,7 @@ img {
 /* The little green circle with My initials */
 .logo-mark {
   display: grid;
-  place-items: center;              /* CSS GRID trick to centre the letter */
+  place-items: center;              /* centres the letter inside the circle */
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -161,7 +149,7 @@ img {
 
 .nav-links {
   list-style: none;      /* removes the bullet points */
-  display: flex;         /* FLEXBOX: puts the links in a row */
+  display: flex;         /* lines the links up in a row */
   gap: 4px;
 }
 
@@ -173,7 +161,7 @@ img {
   font-weight: 500;
   padding: 9px 16px;
   border-radius: 999px;
-  transition: background-color 0.25s, color 0.25s;   /* TRANSITION: smooth colour change on hover */
+  transition: background-color 0.25s, color 0.25s;   /* changes the link colour smoothly */
 }
 
 /* What a link looks like when you hover over it */
@@ -188,7 +176,7 @@ img {
   background-color: var(--green);
 }
 
-/*  Mobile-friendly interface - the hamburger menu button, hidden on big screens, shown on mobile (see section 13) */
+/* I show this menu button on smaller screens and hide it on larger ones. */
 .menu-toggle {
   display: none;
   position: relative;
@@ -219,7 +207,7 @@ img {
 
 
 /* ===================== 4. BUTTONS ===================== */
-/*  Animations or transitions + Flexbox - buttons use inline-flex and change colour smoothly on hover */
+/* I use inline-flex to line up the button text and arrow, with a smooth hover change. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -234,7 +222,7 @@ img {
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.25s, background-color 0.25s, color 0.25s, border-color 0.25s;  /* TRANSITION */
+  transition: transform 0.25s, background-color 0.25s, color 0.25s, border-color 0.25s;  /* smoothly changes the button on hover */
 }
 
 /* On hover the button turns light green and lifts up a little */
@@ -280,9 +268,9 @@ img {
 
 
 /* ===================== 5. HOME PAGE (HERO + MARQUEE) ===================== */
-/*  Professional-looking layout  +   CSS Grid */
+/* I put the intro text and photo side by side on larger screens. */
 .hero {
-  display: grid;                        /*  CSS Grid - text on the left, photo on the right */
+  display: grid;                        /* puts the text on the left and photo on the right */
   grid-template-columns: 1.25fr 0.75fr;
   align-items: center;
   gap: 64px;
@@ -293,7 +281,7 @@ img {
 
 /* Small rounded label above the big heading */
 .eyebrow {
-  display: flex;                        /*  Flexbox */
+  display: flex;                        /* keeps the label and its contents together */
   align-items: center;
   flex-wrap: wrap;
   gap: 14px;
@@ -320,7 +308,7 @@ img {
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 5.6vw, 4.6rem);   /* clamp() = grows with the screen but never too small/big */
+  font-size: clamp(2.6rem, 5.6vw, 4.6rem);   /* scales with the screen while staying readable */
   margin-bottom: 24px;
   animation: fadeIn 0.9s ease both;
 }
@@ -334,7 +322,7 @@ img {
   background-repeat: no-repeat;
   background-position: 0 88%;
   background-size: 0% 0.35em;            /* starts with no width ... */
-  animation: highlight 0.8s 0.6s ease forwards;   /* ... and grows to full width (section 12) */
+  animation: highlight 0.8s 0.6s ease forwards;   /* ... then grows under my name */
 }
 
 .welcome {
@@ -423,7 +411,7 @@ img {
   inset: 0;
   width: 100%;
   height: 100%;
-  animation: spin 18s linear infinite;   /* ANIMATION: slowly rotates */
+  animation: spin 18s linear infinite;   /* slowly rotates the text */
 }
 
 .badge text {
@@ -451,7 +439,7 @@ img {
   display: flex;
   width: max-content;
   gap: 40px;
-  animation: marquee 32s linear infinite;   /* ANIMATION: slides left forever */
+  animation: marquee 32s linear infinite;   /* keeps the words moving to the left */
 }
 
 .marquee-track span {
@@ -467,8 +455,7 @@ img {
   align-self: center;
 }
 
-/* Home page audio intro (this replaced the old ".intro-video" style when the
-   home video was changed to audio). Dark card with an icon and the audio player. */
+/* This dark card holds my home page audio intro and its icon. */
 .intro-audio {
   display: flex;
   align-items: center;
@@ -540,7 +527,7 @@ img {
   margin-top: 16px;
 }
 
-/*  CSS Grid - a two-column layout (heading left, content right) */
+/* puts the heading on the left and the content on the right */
 .split {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -556,7 +543,7 @@ img {
   color: var(--muted);
 }
 
-/*  CSS Grid - the cards arrange themselves into columns automatically */
+/* lets the cards fit into as many columns as the screen allows */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -570,7 +557,7 @@ img {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: transform 0.3s, border-color 0.3s;   /* TRANSITION */
+  transition: transform 0.3s, border-color 0.3s;   /* smoothly lifts the card on hover */
 }
 
 .card:hover {
@@ -646,7 +633,7 @@ img {
 .page-banner h1 {
   font-size: clamp(3.2rem, 9vw, 6.5rem);
   margin-top: 18px;
-  animation: fadeIn 0.9s ease both;    /* ANIMATION */
+  animation: fadeIn 0.9s ease both;    /* brings the heading in gently */
 }
 
 .page-banner p {
@@ -659,7 +646,7 @@ img {
 
 
 /* ===================== 7. ABOUT PAGE (TABLE + LISTS + AUDIO) ===================== */
-/* Table styling ( Tables) */
+/* I wrap the table so it can scroll sideways on small screens. */
 .table-wrapper {
   overflow-x: auto;    /* lets the table scroll sideways on small phones */
   border: 1px solid var(--line);
@@ -713,7 +700,7 @@ tbody tr:hover {
   border-left: 3px solid var(--green);
 }
 
-/*  Flexbox - skills list shown as "pills" */
+/* displays the skills as rounded labels */
 .skills-list {
   list-style: none;
   display: flex;
@@ -830,7 +817,7 @@ tbody tr:hover {
 
 
 /* ===================== 8. PROJECT CARDS ===================== */
-/*  CSS Grid */
+/* lays out the project cards in responsive columns */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -843,7 +830,7 @@ tbody tr:hover {
   border: 1px solid var(--line);
   border-radius: 24px;
   padding: 10px;
-  transition: transform 0.35s, box-shadow 0.35s;   /* TRANSITION */
+  transition: transform 0.35s, box-shadow 0.35s;   /* smooths the card lift and shadow */
 }
 
 /* Card lifts up when you hover over it */
@@ -940,7 +927,7 @@ tbody tr:hover {
 
 
 /* ===================== 9. PLANNER ===================== */
-/*  CSS Grid - summary panel on the left, task list on the right */
+/* puts the summary next to the task list on larger screens */
 .planner-layout {
   display: grid;
   grid-template-columns: 340px 1fr;
@@ -986,7 +973,7 @@ tbody tr:hover {
   height: 100%;
   background-color: var(--green);
   border-radius: 999px;
-  transition: width 0.5s ease;   /* TRANSITION: bar grows smoothly */
+  transition: width 0.5s ease;   /* makes the bar grow smoothly */
 }
 
 .progress-text {
@@ -1009,7 +996,7 @@ tbody tr:hover {
   border-radius: 24px;
 }
 
-/*  Flexbox - text box and button side by side */
+/* keeps the task input and button side by side */
 .task-form {
   display: flex;
   gap: 10px;
@@ -1045,12 +1032,12 @@ tbody tr:hover {
 
 /* One task in the list */
 .task-item {
-  display: flex;                    /*  Flexbox - [circle] task text [delete] */
+  display: flex;                    /* lines up the done button, task, and delete button */
   align-items: center;
   gap: 14px;
   padding: 14px 4px;
   border-bottom: 1px solid var(--line);
-  animation: slideIn 0.3s ease;     /* ANIMATION: new tasks slide in (see section 12) */
+  animation: slideIn 0.3s ease;     /* new tasks slide in when they are added */
 }
 
 .task-item:last-child {
@@ -1130,7 +1117,7 @@ tbody tr:hover {
 
 
 /* ===================== 10. CONTACT FORM ===================== */
-/*  CSS Grid - form on the left, contact details on the right */
+/* puts the contact form next to the contact details on larger screens */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -1140,7 +1127,7 @@ tbody tr:hover {
 
 .contact-form {
   display: flex;
-  flex-direction: column;   /*  Flexbox - stacks the fields on top of each other */
+  flex-direction: column;   /* stacks the form fields */
   gap: 20px;
   padding: 32px;
   background-color: var(--white);
@@ -1148,7 +1135,7 @@ tbody tr:hover {
   border-radius: 24px;
 }
 
-/*  CSS Grid - Name and Email side by side */
+/* puts the name and email fields next to each other */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1275,7 +1262,7 @@ tbody tr:hover {
 
 
 /* ===================== 11. FOOTER ===================== */
-/*  Consistent colour scheme - same ink + light green colours as the rest of the site */
+/* I use the same dark green and light green from the rest of the site. */
 .site-footer {
   margin-top: 40px;
   padding: 80px max(24px, calc((100% - 1120px) / 2 + 24px)) 32px;
@@ -1283,7 +1270,7 @@ tbody tr:hover {
   color: var(--white);
 }
 
-/*  Flexbox - big sentence on the left, button on the right */
+/* puts the big sentence on the left and button on the right */
 .footer-inner {
   display: flex;
   justify-content: space-between;
@@ -1317,7 +1304,7 @@ tbody tr:hover {
 
 
 /* ===================== 12. ANIMATIONS ===================== */
-/*  Animations or transitions */
+/* I keep the animations together here so I can reuse them around the site. */
 
 /* Fade in and move up a little */
 @keyframes fadeIn {
@@ -1416,7 +1403,7 @@ tbody tr:hover {
 
 
 /* ===================== 13. RESPONSIVE DESIGN (MOBILE) ===================== */
-/*  Responsive design  +   Mobile-friendly interface */
+/* I adjust the layouts here to make the site work on smaller screens. */
 
 /* Big screens only: the middle project card sits a bit lower (staggered look) */
 @media (min-width: 960px) {
